@@ -7,8 +7,8 @@ import TextRetrieve from "@/components/textRetrieve";
 
 export default function Home() {
   return (
-    <section className="flex flex-col w-240 space-y-8 items-center justify-center p-8 ">
-      <h1 className="text-4xl font-bold mb-4">Online Clipboard</h1>
+    <section className="flex flex-col w-240 space-y-5 items-center justify-center p-8 ">
+      <h1 className="text-3xl font-bold mb-3">Online Clipboard</h1>
       <p className="text-gray-500 mb-8">
         Quickly upload and retrieve your text with ease
       </p>
