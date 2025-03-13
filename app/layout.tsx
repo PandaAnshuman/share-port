@@ -8,6 +8,7 @@ import { Providers } from "./providers";
 import { siteConfig } from "@/config/site";
 import { fontSans } from "@/config/fonts";
 import { Navbar } from "@/components/navbar";
+import { HeartIcon } from "@/components/icons";
 
 export const metadata: Metadata = {
   title: {
@@ -38,7 +39,7 @@ export default function RootLayout({
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
+          fontSans.variable
         )}
       >
         <Providers themeProps={{ attribute: "class", defaultTheme: "dark" }}>
@@ -51,11 +52,12 @@ export default function RootLayout({
               <Link
                 isExternal
                 className="flex items-center gap-1 text-current"
-                href="https://heroui.com?utm_source=next-app-template"
-                title="heroui.com homepage"
+                href="https://www.linkedin.com/in/anshuman-panda-575562258/"
+                title="Anshuman's LinkedIn"
               >
                 <span className="text-default-600">Powered by</span>
-                <p className="text-primary">HeroUI</p>
+                <p className="text-primary">Anshuman</p>
+                <HeartIcon />
               </Link>
             </footer>
           </div>

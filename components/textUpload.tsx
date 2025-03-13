@@ -1,0 +1,78 @@
+"use client";
+import { Button } from "@heroui/button";
+import { useState } from "react";
+import { Textarea } from "@heroui/input";
+import React from "react";
+import { addToast } from "@heroui/toast";
+import PocketBase from "pocketbase";
+
+const pb = new PocketBase(process.env.NEXT_PUBLIC_BACKEND_API);
+const TextUpload = () => {
+  const [text, setText] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [successID, setSuccessID] = useState();
+
+  const handleUpload = async () => {
+    if (!text.trim()) {
+      addToast({
+        title: "Nothing to Upload",
+        description: "Please enter some text to upload.",
+        color: "warning",
+      });
+      return;
+    }
+
+    setLoading(true);
+    try {
+      const clipId = Math.floor(1000 + Math.random() * 9000).toString();
+      const data = { text, clipId };
+
+      const record = await pb.collection("texts").create(data);
+      console.log(record);
+      setSuccessID(record?.clipId);
+
+      addToast({
+        title: "Text Uploaded Successfully!",
+        description: `Your Clip ID: ${clipId}`,
+        color: "success",
+      });
+      setText("");
+    } catch (error) {
+      console.error("Error uploading text:", error);
+      addToast({
+        title: "Upload Failed",
+        description: "An error occurred. Please try again.",
+        color: "danger",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="flex flex-col gap-4 w-full">
+      <Textarea
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        isClearable
+        className="w-full min-h-32"
+        label="Your Text"
+        placeholder="Paste or type your text here..."
+        variant="bordered"
+        onClear={() => setText("")}
+      />
+
+      <Button
+        color="primary"
+        variant="shadow"
+        onClick={handleUpload}
+        isLoading={loading}
+        className="w-full"
+      >
+        {loading ? "Uploading..." : "Create Clip"}
+      </Button>
+    </div>
+  );
+};
+
+export default TextUpload;

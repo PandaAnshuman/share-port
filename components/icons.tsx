@@ -88,6 +88,48 @@ export const GithubIcon: React.FC<IconSvgProps> = ({
     </svg>
   );
 };
+export const HeartIcon: React.FC<IconSvgProps> = ({
+  size = 24,
+  width,
+  height,
+  ...props
+}) => {
+  return (
+    <svg
+      height={size || height}
+      viewBox="0 0 24 24"
+      width={size || width}
+      {...props}
+    >
+      <path
+        fill="red"
+        d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+      />
+    </svg>
+  );
+};
+
+export const LinkedInIcon: React.FC<IconSvgProps> = ({
+  size = 22,
+  width,
+  height,
+  ...props
+}) => {
+  return (
+    <svg
+      height={size || height}
+      viewBox="0 0 24 24"
+      width={size || width}
+      {...props}
+    >
+      <path
+        fill="currentColor"
+        d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.11 1 2.5 1 4.98 2.12 4.98 3.5zM0 21.5h5V7H0v14.5zM7.25 7h4.8v2.1h.07c.67-1.27 2.32-2.61 4.77-2.61 5.11 0 6.05 3.37 6.05 7.75v9.25h-5v-8.2c0-1.96-.04-4.48-2.73-4.48-2.73 0-3.15 2.14-3.15 4.34v8.34h-5V7z"
+      />
+    </svg>
+  );
+};
+
 
 export const MoonFilledIcon = ({
   size = 24,
