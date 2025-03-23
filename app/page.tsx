@@ -53,10 +53,10 @@ export default function Home() {
 
           <TextRetrieve />
 
-          <div className="my-6 text-center text-sm text-blue-400 font-semibold">
+          {/* <div className="my-6 text-center text-sm text-blue-400 font-semibold">
             🔥 Copy-Paste? That’s old news. <br /> Welcome to SharePort — where
             your clipboard goes on vacation and still works for you!
-          </div>
+          </div> */}
         </div>
       )}
     </section>
