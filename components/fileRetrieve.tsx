@@ -93,6 +93,12 @@ const FileRetrieve = () => {
       setLoading(false);
     }
   };
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!loading) {
+      handleFetch();
+    }
+  };
 
   const handleDownload = () => {
     if (!fileData?.url) return;
@@ -124,26 +130,29 @@ const FileRetrieve = () => {
           file. No passwords, no fuss — just magic! 🔥
         </p>
       </div>
-
-      <InputOtp
-        length={4}
-        value={code}
-        onValueChange={setCode}
-        placeholder="Enter code"
-        className="text-lg"
-        size="lg"
-        color="warning"
-      />
-
-      <Button
-        color="primary"
-        variant="shadow"
-        onPress={handleFetch}
-        className="w-full md:w-1/2 lg:w-1/3 py-2 text-lg font-medium"
-        disabled={loading}
+      <form
+        onSubmit={handleSubmit}
+        className="w-full flex flex-col items-center"
       >
-        {loading ? "Retrieving..." : "Retrieve File"}
-      </Button>
+        <InputOtp
+          length={4}
+          value={code}
+          onValueChange={setCode}
+          placeholder="Enter code"
+          className="text-lg"
+          size="lg"
+          color="warning"
+        />
+
+        <Button
+          type="submit" // Ensures Enter triggers the fetch
+          color="primary"
+          variant="shadow"
+          className="w-full md:w-1/2 lg:w-1/3 py-2 text-lg font-medium mt-4"
+        >
+          {loading ? "Retrieving..." : "Retrieve Text"}
+        </Button>
+      </form>
 
       {fileData && (
         <div className="mt-6 w-full max-w-lg border rounded-lg p-4 bg-blue-50">
